@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'user',
     'main',
+    'orders',
 ]
 
 SITE_ID = 1 
@@ -155,6 +156,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER =config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD =config('EMAIL_HOST_PASSWORD')
+STRIPE_TEST_PUBLISHABLE_KEY=config('STRIPE_TEST_PUBLISHABLE_KEY')
 
 
 ACCOUNT_SESSION_REMEMBER = True
