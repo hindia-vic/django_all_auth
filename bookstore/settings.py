@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'crispy_forms',
     'crispy_bootstrap4',
+    'debug_toolbar',
     'user',
     'main',
     'orders',
@@ -54,6 +55,7 @@ SITE_ID = 1
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,11 +64,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "allauth.account.middleware.AccountMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 ROOT_URLCONF = 'bookstore.urls'
 MEDIA_URL='/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+
+INTERNAL_IPS='127.0.0.1'
 
 TEMPLATES = [
     {
